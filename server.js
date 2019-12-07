@@ -30,7 +30,7 @@ app.get("/add", function(req, res) {
 
 // Displays all notes
 app.get("/api/notes", function(req, res) {
-  return res.json(notes);
+  res.sendFile(path.join(__dirname, "notes.html"));
 });
 
 // Displays a single note, or returns false
