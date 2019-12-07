@@ -23,7 +23,7 @@
       <hr>
       <a href="/add"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> Add New
           Note</button></a>
-      <a href="/api/notes"><button class="btn btn-danger btn-lg"><span
+      <a href="/notes"><button class="btn btn-danger btn-lg"><span
             class="fa fa-eye"></span> All Notes</button></a>
     </div>
     <div class="row">
@@ -54,7 +54,7 @@
       // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
       searchedNote = searchedNote.replace(/\s+/g, "").toLowerCase();
 
-      $.get("/api/notes/" + searchedNote, function(data) {
+      $.get("/notes" + searchedNote, function(data) {
         console.log(data);
         if (data) {
           $("#message").show();

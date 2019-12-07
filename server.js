@@ -1,72 +1,39 @@
-// Dependencies
-// =============================================================
-var express = require("express");
-var path = require("path");
+// ==============================================================================
+// DEPENDENCIES
+// Series of npm packages that we will use to give our server useful functionality
+// ==============================================================================
 
-// Sets up the Express App
-// =============================================================
+var express = require("express");
+
+// ==============================================================================
+// EXPRESS CONFIGURATION
+// This sets up the basic properties for our express server
+// ==============================================================================
+
+// Tells node that we are creating an "express" server
 var app = express();
-var PORT = 3000;
+
+// Sets an initial port. We"ll use this later in our listener
+var PORT = process.env.PORT || 8080;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Notes (DATA)
-// =============================================================
-var notes = [];
+// ================================================================================
+// ROUTER
+// The below points our server to a series of "route" files.
+// These routes give our server a "map" of how to respond when users visit or request data from various URLs.
+// ================================================================================
 
-// Routes
-// =============================================================
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
-// Basic route that sends the user first to the AJAX Page
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
-});
+// =============================================================================
+// LISTENER
+// The below code effectively "starts" our server
+// =============================================================================
 
-app.get("/add", function(req, res) {
-  res.sendFile(path.join(__dirname, "add.html"));
-});
-
-// Displays all notes
-app.get("/api/notes", function(req, res) {
-  res.sendFile(path.join(__dirname, "notes.html"));
-});
-
-// Displays a single note, or returns false
-app.get("/api/notes/:note", function(req, res) {
-  var chosen = req.params.note;
-
-  console.log(chosen);
-
-  for (var i = 0; i < notes.length; i++) {
-    if (chosen === notes[i].routeName) {
-      return res.json(notes[i]);
-    }
-  }
-
-  return res.json(false);
-});
-
-// Create New notes - takes in JSON input
-app.post("/api/notes", function(req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  // This works because of our body parsing middleware
-  var newNote = req.body;
-
-  // Using a RegEx Pattern to remove spaces from newNote
-  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newNote.routeName = newNote.name.replace(/\s+/g, "").toLowerCase();
-
-  console.log(newNote);
-
-  notes.push(newNote);
-
-  res.json(newNote);
-});
-
-// Starts the server to begin listening
-// =============================================================
 app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+  console.log("App listening on PORT: " + PORT);
 });
