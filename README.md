@@ -2,7 +2,7 @@
 
 ## Deployed Version
 
-kwlahr.github.io/note-taker
+https://shrouded-gorge-99972.herokuapp.com/
 
 ## Description
 
