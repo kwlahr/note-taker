@@ -16,3 +16,4 @@ A CRUD application used to write, save, and delete notes.
 - JQuery
 - Express
 - Regular Expressions
+- Heroku
