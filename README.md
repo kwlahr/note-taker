@@ -8,6 +8,10 @@ https://shrouded-gorge-99972.herokuapp.com/
 
 A CRUD application used to write, save, and delete notes.
 
+## Layout
+
+Server.js provides server and environment setup rendering view.html by default. add.html and notes.html provide styled pages that are accessible from htmlRoutes.js in the routes folder. apiRoutes.js is set up for CRUD functionality.
+
 ## Technologies Used
 
 - HTML
@@ -17,3 +21,7 @@ A CRUD application used to write, save, and delete notes.
 - Express
 - Regular Expressions
 - Heroku
+ 
+ ## Demo
+
+ <img src="./assets/noteTaker.gif"/>
