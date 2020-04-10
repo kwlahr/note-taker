@@ -21,6 +21,14 @@ Server.js provides server and environment setup rendering view.html by default. 
 - Express
 - Regular Expressions
 - Heroku
+
+## Implementation
+
+- clone repo
+- open server in terminal
+- run {npm install}
+- run {node server}
+- navigate in browser to {http://localhost:8080}
  
  ## Demo
 
